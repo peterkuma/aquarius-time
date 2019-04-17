@@ -14,14 +14,14 @@ def parse_iso(s):
 	return None
 
 def from_iso(x):
-	if type(x) is np.ndarray:
+	if isinstance(x, np.ndarray):
 		return np.array([from_iso(t) for t in x])
 	time_dt = parse_iso(x)
 	if time_dt is None: return None
 	return (time_dt - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
 def to_iso(x):
-	if type(x) is np.ndarray:
+	if isinstance(x, np.ndarray):
 		return np.array([to_iso(t) for t in x])
 	return to_datetime(x).strftime('%Y-%m-%dT%H:%M:%S')
 
@@ -71,7 +71,7 @@ def from_date(x):
 	return y
 
 def to_datetime(x):
-	if type(x) is np.ndarray:
+	if isinstance(x, np.ndarray):
 		return np.array([to_datetime(t) for t in x])
 	return dt.datetime(1970,1,1) + dt.timedelta(seconds=(x - 2440587.5)*24.0*60.0*60.0)
 
@@ -81,7 +81,7 @@ def from_datetime(x):
 	return (x - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
 def year_day(x):
-	if type(x) is np.ndarray:
+	if isinstance(x, np.ndarray):
 		return np.array([year_day(t) for t in x])
 	y = to_date(x)
 	z = from_date([1, y[1], 1, 1, 0, 0, 0, 0])
