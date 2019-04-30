@@ -23,7 +23,10 @@ def from_iso(x):
 def to_iso(x):
 	if isinstance(x, np.ndarray):
 		return np.array([to_iso(t) for t in x])
-	return to_datetime(x).strftime('%Y-%m-%dT%H:%M:%S')
+	y = to_datetime(x)
+	f = y.microsecond/1e6
+	y += dt.timedelta(seconds=(-f if f < 0.5 else 1-f))
+	return y.strftime('%Y-%m-%dT%H:%M:%S')
 
 def to_date(x):
 	try:
