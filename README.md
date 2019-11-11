@@ -40,7 +40,7 @@ import aquarius_time as aq
 ### from_datetime
 
 ```python
-from_datetime(x)
+aq.from_datetime(x)
 ```
 
 Convert Python datetime `x` to Julian date.
@@ -53,7 +53,7 @@ is a list.
 ### to_datetime
 
 ```python
-to_datetime(x)
+aq.to_datetime(x)
 ```
 
 Convert Julian date `x` to Python datetime.
@@ -65,7 +65,7 @@ Returns datetime or a list of datetimes if `x` is a numpy array.
 ### from_iso
 
 ```python
-from_iso(x)
+aq.from_iso(x)
 ```
 
 Convert ISO 8601 time to Julian date.
@@ -77,7 +77,7 @@ Returns Julian date (float) or a numpy array (float64) if `x` is a list.
 ### to_iso
 
 ```python
-to_iso(x)
+aq.to_iso(x)
 ```
 
 Convert Julian date to ISO 8601 time.
@@ -90,7 +90,7 @@ if `x` a numpy array.
 ### from_date
 
 ```python
-from_date(x)
+aq.from_date(x)
 ```
 
 Convert date (see Date) to Julian date.
@@ -102,7 +102,7 @@ Returns Julian date (float) or a numpy array of Julian dates.
 ### to_date
 
 ```python
-to_date(x)
+aq.to_date(x)
 ```
 
 Convert Julian date to date (see Date).
