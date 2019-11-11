@@ -27,7 +27,7 @@ python setup.py install
 
 To install in user directories:
 
-``sh
+```sh
 python setup.py install --user
 ```
 
