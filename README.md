@@ -31,7 +31,7 @@ To install in user directories:
 python setup.py install --user
 ```
 
-## Python functions
+## Python interface
 
 ```python
 import aquarius_time as aq
@@ -127,6 +127,30 @@ Date is a list containing numbers or numpy arrays in the following order:
 Calendar:
 
 - `1`: Gregorian calendar.
+
+## Command line interface
+
+### aq
+
+```sh
+aq <from> <to> [<value>...]
+```
+
+Convert value(s) from one time format to another. The converted value(s) is
+printed to the standard output. If no values are provided as command line
+arguments, read values from the standard input, separated by new lines.
+If a value cannot be converted, print `none`.
+
+Arguments:
+
+- `from` - From format (see Format below).
+- `to` - To format (see Format below).
+- `value` - Value to be converted.
+
+Format:
+
+- `jd` - Julian date.
+- `iso` - ISO 8601.
 
 ## License
 

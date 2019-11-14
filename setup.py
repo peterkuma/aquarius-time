@@ -4,6 +4,7 @@ setup(
 	name='aquarius_time',
 	version='0.1.0',
 	packages=find_packages(),
+	scripts=['bin/aq'],
 	description='Scientific time library for Python',
 	author='Peter Kuma',
 	author_email='peter.kuma@fastmail.com',
