@@ -156,3 +156,8 @@ Format:
 
 MIT. See [LICENSE.md](LICENSE.md).
 
+## Releases
+
+### 0.1.0 (2020-04-29)
+
+- Initial development release.
