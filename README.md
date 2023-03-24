@@ -14,7 +14,7 @@ and ISO 8601 time.
 
 Requirements:
 
-- Python 2.7 or Python 3
+- Python 3
 
 **Note:** To install with Python 3 instead of Python 2 replace `python` in the
 commands below with `python3`.
@@ -113,7 +113,7 @@ Returns date.
 
 ## Date
 
-Date is a list containing numbers or numpy arrays in the following order: 
+Date is a list containing numbers or numpy arrays in the following order:
 
 0. Calendar (see Calendar below) (int8).
 1. Year (int32).
@@ -157,6 +157,11 @@ Format:
 MIT. See [LICENSE.md](LICENSE.md).
 
 ## Releases
+
+### 0.2.0 (2023-03-24)
+
+- Fixed handling of fractions of a second in from\_date.
+- Discontinued support for Python 2.
 
 ### 0.1.0 (2020-04-29)
 
