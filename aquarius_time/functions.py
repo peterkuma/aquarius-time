@@ -70,7 +70,7 @@ def from_date(x):
 		) - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 	y = np.zeros(n)
 	for i in range(n):
-		y[i] = from_date((x[0][i], x[1][i], x[2][i], x[3][i], x[4][i], x[5][i], x[6][i]))
+		y[i] = from_date((x[0][i], x[1][i], x[2][i], x[3][i], x[4][i], x[5][i], x[6][i], x[7][i]))
 	return y
 
 def to_datetime(x):
