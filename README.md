@@ -51,6 +51,9 @@ allows conversion between Python datetime, date arrays and ISO 8601 time.
    pipx install aquarius-time
    ```
 
+   You might have to add `$HOME/.local/bin` to the PATH environment variable if
+   not present already.
+
 ### Anaconda on Linux, macOS and Windows
 
 1. Install [Anaconda](https://www.anaconda.com/download).
