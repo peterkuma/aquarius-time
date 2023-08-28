@@ -71,6 +71,9 @@ allows conversion between Python datetime, date arrays and ISO 8601 time.
 import aquarius_time as aq
 ```
 
+In the description below, an "array" is an instance of `list`, `tuple` or
+`numpy.ndarray`.
+
 ### from_datetime
 
 ```python
@@ -79,10 +82,10 @@ aq.from_datetime(x)
 
 Convert Python datetime `x` to Julian date.
 
-- `x` - datetime instance or a list of datetime instances (datetime or list).
+- `x` - datetime instance or an array of datetime instances.
 
-Returns Julian date (float) or a numpy array of Julian dates (float64) if `x`
-is a list.
+Returns Julian date (float) or an array of Julian dates (np.float64 if
+array is numpy.ndarray or float otherwise) if `x` is an array.
 
 ### to_datetime
 
@@ -92,9 +95,9 @@ aq.to_datetime(x)
 
 Convert Julian date `x` to Python datetime.
 
-- `x` - Julian date (float) or a numpy array of Julian dates (float64).
+- `x` - Julian date (float) or an array of Julian dates (float64).
 
-Returns datetime or a list of datetimes if `x` is a numpy array.
+Returns datetime or an array of datetime if `x` is an array.
 
 ### from_iso
 
@@ -104,9 +107,10 @@ aq.from_iso(x)
 
 Convert ISO 8601 time to Julian date.
 
-- `x` - ISO 8601 time (str) or a list of ISO 8601 times (list of str).
+- `x` - ISO 8601 time (str) or an array of ISO 8601 times.
 
-Returns Julian date (float) or a numpy array (float64) if `x` is a list.
+Returns Julian date (float) or an array (np.float64 if array is np.ndarray or
+float otherwise) if `x` is an array.
 
 ### to_iso
 
