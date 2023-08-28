@@ -1,35 +1,66 @@
 # Aquarius Time: Scientific time library for Python
 
-**Development status:** in development
-
-Aquarius Time is a Python library for performing time
-calculations which aims to be more convenient for scientific applications than
-the default Python time library (datetime).
-It uses the standard of Julian date,
-the fractional number of days from -4712-01-01 12:00 as the basis for time
-representation, and allows conversion between Python datetime, date arrays
-and ISO 8601 time.
+Aquarius Time is a Python library for performing time calculations which aims
+to be more convenient for scientific applications than the default Python time
+library (datetime). It uses the standard of Julian date, i.e. the fractional
+number of days from -4712-01-01 12:00 as the basis for time representation, and
+allows conversion between Python datetime, date arrays and ISO 8601 time.
 
 ## Installation
 
-Requirements:
+### Default Python distribution on Linux
 
-- Python 3
+1. Install the required system packages. On Debian-based distributions (Ubuntu,
+   Devuan, ...):
 
-**Note:** To install with Python 3 instead of Python 2 replace `python` in the
-commands below with `python3`.
+   ```
+   sudo apt install python3 python3-pip python3-venv python3-pipx
+   ```
 
-To install in system directories:
+   On Fedora:
 
-```sh
-python setup.py install
-```
+   ```
+   sudo yum install python3 python3-pip python3-pipx
+   ```
 
-To install in user directories:
+2. To install Aquarius Time in a Python virtual environment:
 
-```sh
-python setup.py install --user
-```
+   ```
+   python3 -m venv venv
+   . venv/bin/activate
+   pip install aquarius-time
+   ```
+
+   Replace `python3` with `python` if `python3` is not available.
+
+   To install Aquarius Time in the user's home directory:
+
+   ```
+   pip3 install aquarius-time
+   ```
+
+   Replace `pip3` with `pip` if `pip3` is not available. You might have to add
+   `--break-system-packages` if your distribution does not allow installation of
+   Python packages in the home directory and you
+   want to override this.
+
+   To install Aquarius Time with pipx (if you want to use the command-line
+   interface):
+
+   ```
+   pipx install aquarius-time
+   ```
+
+### Anaconda on Linux, macOS and Windows
+
+1. Install [Anaconda](https://www.anaconda.com/download).
+
+2. Install Aquarius Time in the terminal (Linux, macOS) or Anaconda Prompt
+   (Windows):
+
+   ```
+   pip install aquarius-time
+   ```
 
 ## Python interface
 
