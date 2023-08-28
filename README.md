@@ -71,7 +71,7 @@ allows conversion between Python datetime, date arrays and ISO 8601 time.
 import aquarius_time as aq
 ```
 
-In the description below, an "array" is an instance of `list`, `tuple` or
+In the description below, an "array" means an instance of `list`, `tuple` or
 `numpy.ndarray`.
 
 ### from_datetime
@@ -82,10 +82,10 @@ aq.from_datetime(x)
 
 Convert Python datetime `x` to Julian date.
 
-- `x` - datetime instance or an array of datetime instances.
+- `x` - `datetime` instance or an array of `datetime` instances.
 
-Returns Julian date (float) or an array of Julian dates (np.float64 if
-array is numpy.ndarray or float otherwise) if `x` is an array.
+Returns a Julian date (`float`) or an array (type `numpy.float64` if `x` is
+`numpy.ndarray` or `float` otherwise) of Julian dates `x` is an array.
 
 ### to_datetime
 
@@ -95,9 +95,10 @@ aq.to_datetime(x)
 
 Convert Julian date `x` to Python datetime.
 
-- `x` - Julian date (float) or an array of Julian dates (float64).
+- `x` - Julian date (`float`) or an array of Julian dates (type `numpy.float64`
+if `numpy.ndarray` or `float` otherwise).
 
-Returns datetime or an array of datetime if `x` is an array.
+Returns `datetime` or an array of `datetime` if `x` is an array.
 
 ### from_iso
 
@@ -107,10 +108,10 @@ aq.from_iso(x)
 
 Convert ISO 8601 time to Julian date.
 
-- `x` - ISO 8601 time (str) or an array of ISO 8601 times.
+- `x` - ISO 8601 time (`str`) or an array of ISO 8601 times.
 
-Returns Julian date (float) or an array (np.float64 if array is np.ndarray or
-float otherwise) if `x` is an array.
+Returns Julian date (float) or an array (numpy.float64 if array is
+numpy.ndarray or float otherwise) if `x` is an array.
 
 ### to_iso
 
@@ -120,10 +121,11 @@ aq.to_iso(x)
 
 Convert Julian date to ISO 8601 time.
 
-- `x` - Julian date (float) or a numpy array of Julian dates (float64).
+- `x` - Julian date (`float) or an array of Julian dates (type `numpy.float64`
+  if `np.ndarray` or `float` otherwise).
 
-Returns ISO 8601 time (str) of a list of ISO 8601 times (list of str)
-if `x` a numpy array.
+Returns ISO 8601 time (`str`) of an array of ISO 8601 times (type `str`) if `x`
+is an array.
 
 ### from_date
 
@@ -131,11 +133,11 @@ if `x` a numpy array.
 aq.from_date(x)
 ```
 
-Convert date (see Date) to Julian date.
+Convert date (see [Date](#date)) to Julian date.
 
-- `x` - Date (see Date),
+- `x` - Date (see [Date](#date)),
 
-Returns Julian date (float) or a numpy array of Julian dates.
+Returns Julian date (`float`) or an array of Julian dates.
 
 ### to_date
 
@@ -143,9 +145,10 @@ Returns Julian date (float) or a numpy array of Julian dates.
 aq.to_date(x)
 ```
 
-Convert Julian date to date (see Date).
+Convert Julian date to date (see [Date](#date)).
 
-- `x` - Julian date (float) or a numpy array of Julian dates (float64).
+- `x` - Julian date (`float`) or an array of Julian dates (type `numpy.float64`
+if `numpy.ndarray` or `float` otherwise).
 
 Returns date.
 
