@@ -154,7 +154,7 @@ Convert Julian date to date (see [Date](#date)).
 - `x`: Julian date (`float`) or an array of Julian dates (type `numpy.float64`
 if `numpy.ndarray` or `float` otherwise).
 
-Returns date.
+Returns date (see [Date](#date)).
 
 ## Date
 
