@@ -80,12 +80,13 @@ In the description below, an "array" means an instance of `list`, `tuple` or
 aq.from_datetime(x)
 ```
 
-Convert Python datetime `x` to a Julian date.
+Convert Python datetime `x` to Julian date.
 
 - `x`: `datetime` instance or an array of `datetime` instances.
 
-Returns a Julian date (`float`) or an array (type `numpy.float64` if `x` is
-`numpy.ndarray` or `float` otherwise) of Julian dates `x` is an array.
+Returns a Julian date (`float`) or an array of Julian dates (type
+`numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
+if `x` is an array.
 
 ### to_datetime
 
@@ -110,8 +111,9 @@ Convert ISO 8601 time to Julian date.
 
 - `x`: ISO 8601 time (`str`) or an array of ISO 8601 times.
 
-Returns Julian date (float) or an array (numpy.float64 if array is
-numpy.ndarray or float otherwise) if `x` is an array.
+Returns a Julian date (`float`) or an array of Julian dates (type
+`numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
+if `x` is an array.
 
 ### to_iso
 
@@ -137,7 +139,9 @@ Convert date (see [Date](#date)) to Julian date.
 
 - `x`: Date (see [Date](#date)),
 
-Returns Julian date (`float`) or an array of Julian dates.
+Returns a Julian date (`float`) or an array of Julian dates (type
+`numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
+if `x` is an array.
 
 ### to_date
 
@@ -154,7 +158,8 @@ Returns date.
 
 ## Date
 
-Date is a list containing numbers or numpy arrays in the following order:
+Date is a `list` containing numbers or instances of `numpy.ndarray` in the
+following order:
 
 0. Calendar (see Calendar below) (int8).
 1. Year (int32).
