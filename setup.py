@@ -14,7 +14,7 @@ setup(
 	keywords=['time', 'date', 'julian-date', 'datetime', 'utc', 'tai', 'iso-8601'],
 	url='https://github.com/peterkuma/aquarius-time',
 	classifiers=[
-		'Development Status :: 4 - Beta',
+		'Development Status :: 5 - Production/Stable',
 		'Intended Audience :: Science/Research',
 		'License :: OSI Approved :: MIT License',
 		'Operating System :: OS Independent',
