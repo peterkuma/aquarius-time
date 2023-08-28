@@ -13,16 +13,28 @@ def parse_iso(s):
 		except: pass
 	return None
 
+def for_array(func):
+	def f(x):
+		if isinstance(x, (list, tuple, np.ndarray)):
+			res = [func(y) for y in x]
+		else:
+			res = func(x)
+		if isinstance(x, np.ndarray):
+			return np.array(res)
+		if isinstance(x, tuple):
+			return tuple(res)
+		else:
+			return res
+	return f
+
+@for_array
 def from_iso(x):
-	if isinstance(x, np.ndarray):
-		return np.array([from_iso(t) for t in x])
 	time_dt = parse_iso(x)
 	if time_dt is None: return None
 	return (time_dt - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
+@for_array
 def to_iso(x):
-	if isinstance(x, np.ndarray):
-		return np.array([to_iso(t) for t in x])
 	y = to_datetime(x)
 	f = y.microsecond/1e6
 	y += dt.timedelta(seconds=(-f if f < 0.5 else 1-f))
@@ -73,19 +85,16 @@ def from_date(x):
 		y[i] = from_date((x[0][i], x[1][i], x[2][i], x[3][i], x[4][i], x[5][i], x[6][i], x[7][i]))
 	return y
 
+@for_array
 def to_datetime(x):
-	if isinstance(x, np.ndarray):
-		return np.array([to_datetime(t) for t in x])
 	return dt.datetime(1970,1,1) + dt.timedelta(seconds=(x - 2440587.5)*24.0*60.0*60.0)
 
+@for_array
 def from_datetime(x):
-	if type(x) is list:
-		return np.array([from_datetime(t) for t in x])
 	return (x - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
+@for_array
 def year_day(x):
-	if isinstance(x, np.ndarray):
-		return np.array([year_day(t) for t in x])
 	y = to_date(x)
 	z = from_date([1, y[1], 1, 1, 0, 0, 0, 0])
 	return x - z
