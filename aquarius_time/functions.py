@@ -15,12 +15,19 @@ def parse_iso(s):
 
 def for_array(func):
 	def f(x):
-		if isinstance(x, (list, tuple, np.ndarray)):
+		if isinstance(x, np.ndarray):
+			shape = x.shape
+			res = [func(y) for y in x.flatten()]
+		elif isinstance(x, (list, tuple)):
 			res = [func(y) for y in x]
+		elif x is np.ma.masked:
+			res = x
 		else:
 			res = func(x)
+		if isinstance(x, np.ma.core.MaskedArray):
+			return np.ma.array(res, mask=x.mask).reshape(shape)
 		if isinstance(x, np.ndarray):
-			return np.array(res)
+			return np.array(res).reshape(shape)
 		if isinstance(x, tuple):
 			return tuple(res)
 		else:
@@ -29,12 +36,14 @@ def for_array(func):
 
 @for_array
 def from_iso(x):
+	if x is np.ma.masked: return np.nan
 	time_dt = parse_iso(x)
 	if time_dt is None: return None
 	return (time_dt - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
 @for_array
 def to_iso(x):
+	if x is np.ma.masked: return ''
 	y = to_datetime(x)
 	f = y.microsecond/1e6
 	y += dt.timedelta(seconds=(-f if f < 0.5 else 1-f))
@@ -66,6 +75,7 @@ def to_date(x):
 	return [cal, year, month, day, hour, minute, second, frac]
 
 def from_date(x):
+	if x is np.ma.masked: return np.nan
 	try:
 		n = len(x[0])
 	except:
@@ -87,14 +97,17 @@ def from_date(x):
 
 @for_array
 def to_datetime(x):
+	if x is np.ma.masked: return None
 	return dt.datetime(1970,1,1) + dt.timedelta(seconds=(x - 2440587.5)*24.0*60.0*60.0)
 
 @for_array
 def from_datetime(x):
+	if x is np.ma.masked: return np.nan
 	return (x - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
 @for_array
 def year_day(x):
+	if x is np.ma.masked: return np.nan
 	y = to_date(x)
 	z = from_date([1, y[1], 1, 1, 0, 0, 0, 0])
 	return x - z
