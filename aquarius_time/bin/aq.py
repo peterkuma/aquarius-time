@@ -16,7 +16,7 @@ TO = {
 	'jd': noop,
 }
 
-if __name__ == '__main__':
+def main():
 	args, opts = pst.decode_argv(sys.argv, as_unicode=True)
 	if len(args) < 3:
 		sys.stderr.write('Usage: %s <from> <to> [<value>...]\n' % args[0])
@@ -40,3 +40,5 @@ if __name__ == '__main__':
 			x = f2(f1(value))
 			print(x if x is not None else 'none')
 
+if __name__ == '__main__':
+	main()

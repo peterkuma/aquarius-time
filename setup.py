@@ -6,7 +6,9 @@ setup(
 	name='aquarius_time',
 	version='0.2.0',
 	packages=find_packages(),
-	scripts=['bin/aq'],
+	entry_points={
+		'console_scripts': 'aq = aquarius_time.bin.aq:main',
+	},
 	description='Scientific time library for Python',
 	author='Peter Kuma',
 	author_email='peter@peterkuma.net',
