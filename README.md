@@ -178,25 +178,25 @@ Calendar:
 
 ### aq
 
-```sh
-aq <from> <to> [<value>...]
-```
+Synopsis:
+
+`aq` *from* *to* [*value*...]
 
 Convert value(s) from one time format to another. The converted value(s) is
 printed to the standard output. If no values are provided as command line
-arguments, read values from the standard input, separated by new lines.
-If a value cannot be converted, print `none`.
+arguments, read values from the standard input, separated by new lines. If a
+value cannot be converted, print `none`.
 
 Arguments:
 
-- `from` - From format (see Format below).
-- `to` - To format (see Format below).
-- `value` - Value to be converted.
+- *from*: From format (see Format below).
+- *to*: To format (see Format below).
+- *value*: Value to be converted.
 
 Format:
 
-- `jd` - Julian date.
-- `iso` - ISO 8601.
+- `jd`: Julian date.
+- `iso`: ISO 8601.
 
 ## License
 
