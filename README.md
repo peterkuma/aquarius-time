@@ -8,62 +8,106 @@ allows conversion between Python datetime, date arrays and ISO 8601 time.
 
 ## Installation
 
-### Default Python distribution on Linux
+Installation on Linux is recommended.
 
-1. Install the required system packages. On Debian-based distributions (Ubuntu,
-   Devuan, ...):
+### Linux
+
+1. Install the required system packages. On Debian-derived distributions
+   (Ubuntu, Devuan, ...):
 
    ```
-   sudo apt install python3 python3-pip python3-venv python3-pipx
+   apt install python3-full python3-pip python3-venv pipx
    ```
 
    On Fedora:
 
    ```
-   sudo yum install python3 python3-pip python3-pipx
+   sudo yum install python3 python3-pip pipx
    ```
 
-2. To install Aquarius Time in a Python virtual environment:
-
-   ```
-   python3 -m venv venv
-   . venv/bin/activate
-   pip install aquarius-time
-   ```
-
-   Replace `python3` with `python` if `python3` is not available.
-
-   To install Aquarius Time in the user's home directory:
+2. Install Aquarius Time. If you indend to use the Python interface, you can
+   install in the home directory with pip3:
 
    ```
    pip3 install aquarius-time
    ```
 
-   Replace `pip3` with `pip` if `pip3` is not available. You might have to add
-   `--break-system-packages` if your distribution does not allow installation of
-   Python packages in the home directory and you
-   want to override this.
+   Replace pip3 with pip if pip3 is not available. Add `--break-system-packages`
+   if your distribution does not allow installing into the home directory but
+   you want to anyway.
 
-   To install Aquarius Time with pipx (if you want to use the command-line
-   interface):
+   Alternatively, install into a Python virtual environment with:
+
+   ```
+   python3 -m venv venv
+   . venv/bin/activate
+   pip3 install aquarius-time
+   ```
+
+   You can then use the Aquarius Time Python interface from within the virtual
+   environment. Deactivate the environment with `deactivate`.
+
+   If you only indend to use the command-line interface,
+   you can install Aquarius Time with pipx:
 
    ```
    pipx install aquarius-time
    ```
 
-   You might have to add `$HOME/.local/bin` to the PATH environment variable if
-   not present already.
+   You might have to add `$HOME/.local/bin` to the PATH environment variable
+   if not present already in order to access the aq command. This can be done
+   with `pipx ensurepath`.
 
-### Anaconda on Linux, macOS and Windows
+You should now be able to run the command `aq`.
 
-1. Install [Anaconda](https://www.anaconda.com/download).
+### Windows
 
-2. Install Aquarius Time in the terminal (Linux, macOS) or Anaconda Prompt
-   (Windows):
+1. Install [Python](https://www.python.org/). In the installer, tick `Add
+python.exe to PATH`.
 
-   ```
-   pip install aquarius-time
-   ```
+2. Open the Command Prompt from the Start menu. Install Aquarius Time with:
+
+    ```
+	pip3 install aquarius-time
+	```
+
+You should now be able to run the command `aq`.
+
+### macOS
+
+Open the Terminal. Install Aquarius Time with:
+
+```
+python3 -m pip install aquarius-time
+```
+
+Make sure that `/Users/<user>/Library/Python/<version>/bin` is included in the
+`PATH` environment variable if not already, where `<user>` is your system
+user name and `<version>` is the Python version. This path should be printed
+by the above command. This can be done by adding this line to the file
+`.zprofile` in your home directory and restart the Terminal:
+
+```
+PATH="$PATH:/Users/<user>/Library/Python/<version>/bin"
+```
+
+You should now be able to run the command `aq`.
+
+## Uninstallation
+
+To uninstall if installed with pipx:
+
+```
+pipx uninstall aquarius-time
+```
+
+To uninstall if installed with pip3 or pip:
+
+```
+pip3 uninstall aquarius-time
+```
+
+Replace pip3 with pip if pip3 is not available.
 
 ## Python interface
 
