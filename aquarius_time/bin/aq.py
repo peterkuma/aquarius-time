@@ -1,4 +1,23 @@
 #!/usr/bin/env python
+'''Convert from one time format to another.
+
+Usage: aq FROM TO [VALUE...]
+
+The converted value(s) is printed to the standard output. If no values are
+provided as command line arguments, read values from the standard input,
+separated by new lines. If a value cannot be converted, print "none".
+
+Arguments:
+
+  FROM   From format (see Format below).
+  TO     To format (see Format below).
+  VALUE  Value to be converted.
+
+Format:
+
+    jd   Julian date.
+    iso  ISO 8601.
+'''
 
 import sys
 import pst
@@ -19,7 +38,7 @@ TO = {
 def main():
 	args, opts = pst.decode_argv(sys.argv, as_unicode=True)
 	if len(args) < 3:
-		sys.stderr.write('Usage: %s <from> <to> [<value>...]\n' % args[0])
+		sys.stderr.write(sys.modules[__name__].__doc__)
 		sys.exit(1)
 	from_ = args[1]
 	to = args[2]
