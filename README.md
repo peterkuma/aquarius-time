@@ -248,6 +248,13 @@ MIT. See [LICENSE.md](LICENSE.md).
 
 ## Releases
 
+### 0.3.0 (2023-09-08)
+
+- Support for lists, tuples, masked and multi-dim arrays, while preserving the
+  variable type.
+- Fixed installation on Windows.
+- Improved documentation.
+
 ### 0.2.0 (2023-03-24)
 
 - Fixed handling of fractions of a second in from\_date.
