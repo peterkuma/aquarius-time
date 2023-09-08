@@ -9,6 +9,10 @@ setup(
 	entry_points={
 		'console_scripts': 'aq = aquarius_time.bin.aq:main',
 	},
+	install_requires=[
+		'numpy>=1.24.2',
+		'pst-format>=2.0.0',
+	],
 	description='Scientific time library for Python',
 	author='Peter Kuma',
 	author_email='peter@peterkuma.net',
