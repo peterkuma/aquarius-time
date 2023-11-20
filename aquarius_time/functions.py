@@ -64,15 +64,25 @@ def to_date(x):
 		n = len(x)
 	except:
 		return to_date(np.array([x]))
-	cal = np.ones(n, dtype=np.int8)
-	year = np.zeros(n, dtype=np.int32)
-	month = np.zeros(n, dtype=np.int8)
-	day = np.zeros(n, dtype=np.int8)
-	hour = np.zeros(n, dtype=np.int8)
-	minute = np.zeros(n, dtype=np.int8)
-	second = np.zeros(n, dtype=np.int8)
-	frac = np.zeros(n, dtype=np.float64)
+	cal = np.ma.ones(n, dtype=np.int8)
+	year = np.ma.zeros(n, dtype=np.int32)
+	month = np.ma.zeros(n, dtype=np.int8)
+	day = np.ma.zeros(n, dtype=np.int8)
+	hour = np.ma.zeros(n, dtype=np.int8)
+	minute = np.ma.zeros(n, dtype=np.int8)
+	second = np.ma.zeros(n, dtype=np.int8)
+	frac = np.ma.zeros(n, dtype=np.float64)
 	for i in range(n):
+		if missing(x[i]):
+			cal[i] = np.ma.masked
+			year[i] = np.ma.masked
+			month[i] = np.ma.masked
+			day[i] = np.ma.masked
+			hour[i] = np.ma.masked
+			minute[i] = np.ma.masked
+			second[i] = np.ma.masked
+			frac[i] = np.ma.masked
+			continue
 		y = dt.datetime(1970,1,1) + dt.timedelta(days=(x[i] - 2440587.5))
 		cal[i] = 1
 		year[i] = y.year
@@ -100,9 +110,11 @@ def from_date(x):
 			get(x, 6, 0),
 			int(get(x, 7, 0)*1e6)
 		) - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
-	y = np.zeros(n)
+	y = np.full(n, np.nan, np.float64)
 	for i in range(n):
-		y[i] = from_date((x[0][i], x[1][i], x[2][i], x[3][i], x[4][i], x[5][i], x[6][i], x[7][i]))
+		if any([missing(x[j]) for j in range(8)]):
+			continue
+		y[i] = from_date([x[j] for j in range(8)])
 	return y
 
 @for_array
