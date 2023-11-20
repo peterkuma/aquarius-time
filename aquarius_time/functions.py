@@ -37,16 +37,23 @@ def for_array(func):
 			return res
 	return f
 
+def missing(x):
+	return \
+		x is None or \
+		x is np.ma.masked or \
+		isinstance(x, float) and not np.isfinite(x) or \
+		x == ''
+
 @for_array
 def from_iso(x):
-	if x is np.ma.masked: return np.nan
+	if missing(x): return np.nan
 	time_dt = parse_iso(x)
 	if time_dt is None: return None
 	return (time_dt - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
 @for_array
 def to_iso(x):
-	if x is np.ma.masked: return ''
+	if missing(x): return ''
 	y = to_datetime(x)
 	f = y.microsecond/1e6
 	y += dt.timedelta(seconds=(-f if f < 0.5 else 1-f))
@@ -78,7 +85,7 @@ def to_date(x):
 	return [cal, year, month, day, hour, minute, second, frac]
 
 def from_date(x):
-	if x is np.ma.masked: return np.nan
+	if missing(x): return np.nan
 	try:
 		n = len(x[0])
 	except:
@@ -100,17 +107,17 @@ def from_date(x):
 
 @for_array
 def to_datetime(x):
-	if x is np.ma.masked: return None
+	if missing(x): return None
 	return dt.datetime(1970,1,1) + dt.timedelta(seconds=(x - 2440587.5)*24.0*60.0*60.0)
 
 @for_array
 def from_datetime(x):
-	if x is np.ma.masked: return np.nan
+	if missing(x): return np.nan
 	return (x - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
 @for_array
 def year_day(x):
-	if x is np.ma.masked: return np.nan
+	if missing(x): return np.nan
 	y = to_date(x)
 	z = from_date([1, y[1], 1, 1, 0, 0, 0, 0])
 	return x - z
