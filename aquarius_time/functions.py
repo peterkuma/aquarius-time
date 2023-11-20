@@ -55,6 +55,7 @@ def from_iso(x):
 def to_iso(x):
 	if missing(x): return None
 	y = to_datetime(x)
+	if y is None: return ''
 	f = y.microsecond/1e6
 	y += dt.timedelta(seconds=(-f if f < 0.5 else 1-f))
 	return y.strftime('%Y-%m-%dT%H:%M:%S')
@@ -120,7 +121,10 @@ def from_date(x):
 @for_array
 def to_datetime(x):
 	if missing(x): return None
-	return dt.datetime(1970,1,1) + dt.timedelta(seconds=(x - 2440587.5)*24.0*60.0*60.0)
+	try:
+		return dt.datetime(1970,1,1) + dt.timedelta(seconds=(x - 2440587.5)*24.0*60.0*60.0)
+	except OverflowError:
+		return None
 
 @for_array
 def from_datetime(x):
