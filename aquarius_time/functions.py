@@ -48,12 +48,12 @@ def missing(x):
 def from_iso(x):
 	if missing(x): return np.nan
 	time_dt = parse_iso(x)
-	if time_dt is None: return None
+	if time_dt is None: return np.nan
 	return (time_dt - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
 
 @for_array
 def to_iso(x):
-	if missing(x): return ''
+	if missing(x): return None
 	y = to_datetime(x)
 	f = y.microsecond/1e6
 	y += dt.timedelta(seconds=(-f if f < 0.5 else 1-f))
