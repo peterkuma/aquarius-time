@@ -6,6 +6,9 @@ def parse_iso(s):
 		'%Y-%m-%dT%H:%M:%SZ',
 		'%Y-%m-%dT%H:%M:%S',
 		'%Y-%m-%dT%H:%M',
+		'%Y-%m-%dT%H%M%SZ',
+		'%Y-%m-%dT%H%M%S',
+		'%Y-%m-%dT%H%M',
 		'%Y-%m-%d',
 	]
 	for f in formats:
