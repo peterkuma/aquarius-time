@@ -97,9 +97,10 @@ def to_date(x):
 
 def from_date(x):
 	if missing(x): return np.nan
-	try:
-		n = len(x[0])
-	except:
+	n = None
+	try: n = len(x[0])
+	except: pass
+	if n is None:
 		def get(a, i, b):
 			return a[i] if len(a) > i else b
 		return (dt.datetime(
@@ -110,12 +111,12 @@ def from_date(x):
 			get(x, 5, 0),
 			get(x, 6, 0),
 			int(get(x, 7, 0)*1e6)
-		) - dt.datetime(1970,1,1)).total_seconds()/(24.0*60.0*60.0) + 2440587.5
+		) - dt.datetime(1970, 1, 1)).total_seconds()/(24*60*60) + 2440587.5
 	y = np.full(n, np.nan, np.float64)
 	for i in range(n):
-		if any([missing(x[j]) for j in range(8)]):
+		if any([missing(x[j][i]) for j in range(min(8, len(x)))]):
 			continue
-		y[i] = from_date([x[j] for j in range(8)])
+		y[i] = from_date([x[j][i] for j in range(min(8, len(x)))])
 	return y
 
 @for_array
