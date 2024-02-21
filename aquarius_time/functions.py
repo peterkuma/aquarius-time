@@ -64,7 +64,8 @@ def to_date(x):
 	try:
 		n = len(x)
 	except:
-		return to_date(np.array([x]))
+		date = to_date(np.array([x]))
+		return [x[0] for x in date]
 	cal = np.ma.ones(n, dtype=np.int8)
 	year = np.ma.zeros(n, dtype=np.int32)
 	month = np.ma.zeros(n, dtype=np.int8)
