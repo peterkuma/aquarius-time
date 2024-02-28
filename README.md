@@ -248,6 +248,13 @@ MIT. See [LICENSE.md](LICENSE.md).
 
 ## Releases
 
+### 0.4.0 (2024-02-28)
+
+- to_date: array/scalar output is now consistent with the input.
+- Added support for more ISO formats.
+- Improved handling of missing and bad values.
+- Other minor fixes.
+
 ### 0.3.0 (2023-09-08)
 
 - Support for lists, tuples, masked and multi-dim arrays, while preserving the
