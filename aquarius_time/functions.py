@@ -139,3 +139,13 @@ def year_day(x):
 	y = to_date(x)
 	z = from_date([1, y[1], 1, 1, 0, 0, 0, 0])
 	return x - z
+
+@for_array
+def from_unix(x):
+	if missing(x): return np.nan
+	return from_date([1, 1970, 1, 1]) + x/(24*60*60)
+
+@for_array
+def to_unix(x):
+	if missing(x): return np.nan
+	return (x - from_date([1, 1970, 1, 1]))*(24*60*60)

@@ -3,8 +3,8 @@
 Aquarius Time is a Python library for performing time calculations which aims
 to be more convenient for scientific applications than the default Python time
 library (datetime). It uses the standard of Julian date, i.e. the fractional
-number of days from -4712-01-01 12:00 as the basis for time representation, and
-allows conversion between Python datetime, date arrays and ISO 8601 time.
+number of days from -4712-01-01 12:00 UTC as the basis for time representation,
+and allows conversion between Python datetime, date arrays and ISO 8601 time.
 
 ## Installation
 
@@ -199,6 +199,36 @@ Convert Julian date to date (see [Date](#date)).
 if `numpy.ndarray` or `float` otherwise).
 
 Returns date (see [Date](#date)).
+
+### from_unix
+
+```python
+aq.from_unix(x)
+```
+
+Convert UNIX time (number of seconds from 1970-01-01 00:00 UTC excluding leap
+seconds) to Julian date.
+
+- `x`: Date (see [Date](#date)),
+
+Returns a Julian date (`float`) or an array of Julian dates (type
+`numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
+if `x` is an array.
+
+### to_unix
+
+```python
+aq.to_unix(x)
+```
+
+Convert Julian date to UNIX time (number of seconds from 1970-01-01 00:00 UTC
+excluding leap seconds).
+
+- `x`: Julian date (`float`) or an array of Julian dates (type `numpy.float64`
+if `numpy.ndarray` or `float` otherwise).
+
+Returns UNIX time (`float`) of an array of UNIX times (type `numpy.float64` if
+`x` is an instance of `numpy.ndarray` or `float` otherwise) if `x` is an array.
 
 ## Date
 

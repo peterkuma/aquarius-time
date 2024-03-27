@@ -7,4 +7,6 @@ from .functions import \
 	to_date, \
 	year_day, \
 	from_datetime, \
-	to_datetime
+	to_datetime, \
+	from_unix, \
+	to_unix
