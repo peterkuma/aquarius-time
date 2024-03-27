@@ -118,6 +118,20 @@ import aquarius_time as aq
 In the description below, an "array" means an instance of `list`, `tuple` or
 `numpy.ndarray`.
 
+### from_date
+
+```python
+aq.from_date(x)
+```
+
+Convert date (see [Date](#date)) to Julian date.
+
+- `x`: Date (see [Date](#date)),
+
+Returns a Julian date (`float`) or an array of Julian dates (type
+`numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
+if `x` is an array.
+
 ### from_datetime
 
 ```python
@@ -131,19 +145,6 @@ Convert Python datetime `x` to Julian date.
 Returns a Julian date (`float`) or an array of Julian dates (type
 `numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
 if `x` is an array.
-
-### to_datetime
-
-```python
-aq.to_datetime(x)
-```
-
-Convert Julian date `x` to Python datetime.
-
-- `x`: Julian date (`float`) or an array of Julian dates (type `numpy.float64`
-if `numpy.ndarray` or `float` otherwise).
-
-Returns `datetime` or an array of `datetime` if `x` is an array.
 
 ### from_iso
 
@@ -159,27 +160,14 @@ Returns a Julian date (`float`) or an array of Julian dates (type
 `numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
 if `x` is an array.
 
-### to_iso
+### from_unix
 
 ```python
-aq.to_iso(x)
+aq.from_unix(x)
 ```
 
-Convert Julian date to ISO 8601 time.
-
-- `x`: Julian date (`float) or an array of Julian dates (type `numpy.float64`
-  if `np.ndarray` or `float` otherwise).
-
-Returns ISO 8601 time (`str`) of an array of ISO 8601 times (type `str`) if `x`
-is an array.
-
-### from_date
-
-```python
-aq.from_date(x)
-```
-
-Convert date (see [Date](#date)) to Julian date.
+Convert UNIX time (number of seconds from 1970-01-01 00:00 UTC excluding leap
+seconds) to Julian date.
 
 - `x`: Date (see [Date](#date)),
 
@@ -200,20 +188,32 @@ if `numpy.ndarray` or `float` otherwise).
 
 Returns date (see [Date](#date)).
 
-### from_unix
+### to_datetime
 
 ```python
-aq.from_unix(x)
+aq.to_datetime(x)
 ```
 
-Convert UNIX time (number of seconds from 1970-01-01 00:00 UTC excluding leap
-seconds) to Julian date.
+Convert Julian date `x` to Python datetime.
 
-- `x`: Date (see [Date](#date)),
+- `x`: Julian date (`float`) or an array of Julian dates (type `numpy.float64`
+if `numpy.ndarray` or `float` otherwise).
 
-Returns a Julian date (`float`) or an array of Julian dates (type
-`numpy.float64` if `x` is an instance of `numpy.ndarray` or `float` otherwise)
-if `x` is an array.
+Returns `datetime` or an array of `datetime` if `x` is an array.
+
+### to_iso
+
+```python
+aq.to_iso(x)
+```
+
+Convert Julian date to ISO 8601 time.
+
+- `x`: Julian date (`float) or an array of Julian dates (type `numpy.float64`
+  if `np.ndarray` or `float` otherwise).
+
+Returns ISO 8601 time (`str`) of an array of ISO 8601 times (type `str`) if `x`
+is an array.
 
 ### to_unix
 
